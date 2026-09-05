@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ScrltWMp4/3.com - TikTok Downloader</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="sidebar">
+  <h2>ScrltWMp4/3</h2>
+  <div class="item" onclick="showPage('home')">🏠 My Home</div>
+  <div class="item" onclick="showPage('profile')">👤 Profile</div>
+  <div class="item">
+    ⬇️ Type Download:
+    <select id="typeDownload">
+      <option>MP4</option><option>MP3</option>
+    </select>
+  </div>
+  <div class="item" onclick="toggleTheme()">🌙 Mode Terang/Gelap</div>
+  <div class="item" onclick="document.getElementById('bgUpload').click()">🖼️ Custom Background</div>
+  <input type="file" id="bgUpload" class="hidden" accept="image/*">
+  <div class="item" onclick="showPage('gallery')">🗂️ Galeri</div>
+  <div class="item" onclick="checkPremium()">💎 Koleksi Premium <span class="pro-badge" id="proBadge">LOCK</span></div>
+</div>
+
+<div class="main">
+  <div class="topbar">
+    <input type="text" id="searchInput" placeholder="Cari kata kunci, link, caption, hashtag, akun...">
+    <button onclick="doSearch()">Cari</button>
+  </div>
+
+  <div class="content" id="page-home">
+    <h3>Download TikTok MP4 / MP3</h3>
+    <p>Tempel link TikTok di search</p>
+    <div class="gallery" id="resultGallery"></div>
+  </div>
+
+  <div class="content hidden" id="page-profile">
+    <div class="profile-header">
+      <img src="https://i.pravatar.cc/100" alt="pp">
+      <h3 id="username">Nama Pengguna</h3>
+      <p>Level Akun: <span id="level">1</span></p>
+      <button onclick="openPremiumModal()">⋯ Aktifkan Premium</button>
+    </div>
+  </div>
+
+  <div class="content hidden" id="page-gallery">
+    <h3>Galeri Download</h3>
+    <div class="tabs">
+      <button onclick="showTab('video')">Video</button>
+      <button onclick="showTab('audio')">Audio</button>
+      <button onclick="showTab('koleksi')" id="btnKoleksi" class="hidden">Koleksi</button>
+    </div>
+    <div class="gallery" id="gallery-video"></div>
+    <div class="gallery hidden" id="gallery-audio"></div>
+    <div class="gallery hidden" id="gallery-koleksi">
+      <div class="card add-card" onclick="document.getElementById('fotoUpload').click()">+ Tambah Foto</div>
+      <input type="file" id="fotoUpload" class="hidden" accept="image/*">
+    </div>
+  </div>
+
+  <div class="content hidden" id="page-favorite">
+    <h3>Favorite <span id="favCount">0</span></h3>
+    <div class="gallery" id="gallery-fav"></div>
+  </div>
+</div>
+
+<div class="bottom-nav">
+  <div class="btn" onclick="showPage('home')">🏠</div>
+  <div class="btn" onclick="document.getElementById('searchInput').focus()">🔍</div>
+  <div class="btn" onclick="alert('Tempel link TikTok di kolom search')">➕</div>
+  <div class="btn" onclick="showPage('favorite')">⭐<span class="badge" id="badgeFav">0</span></div>
+  <div class="btn" onclick="showPage('profile')">👤</div>
+</div>
+
+<!-- Modal Premium -->
+<div class="modal hidden" id="premiumModal">
+  <div class="modal-box">
+    <h3>Aktifkan Premium</h3>
+    <p>Masukkan token dari Developer</p>
+    <input type="text" id="tokenInput" placeholder="Masukkan token">
+    <div class="modal-btn">
+      <button onclick="activatePremium()">Aktifkan</button>
+      <button class="btn-cancel" onclick="closePremiumModal()">Batal</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
